@@ -88,7 +88,9 @@ mydate=`date +%B-%d-%y-%R`
            #iperf -c $destination_IP -P$P >> $iperflogfile
            #iperf -c $destination_IP -P$P -p 5010 >> $iperflogfile
            #iperf -c $destination_IP -P$P -p 5010 -F /ccs/proj/quadcore/nrao_temp/send_1_2100M_5020.dat >> $iperflogfile
-           iperf -c $destination_IP -P$P -p 5010 -l 8950 -w 500m  >> $iperflogfile
+           cmd="iperf3 -c $destination_IP -P$P -l 8950 -w 500m  >> $iperflogfile"
+           echo $cmd
+           $cmd
            echo "TCP iperf streams=$P; iteration=$count"
 	   count=` expr $count - 1 `
        done
